@@ -1,4 +1,4 @@
-
+"use client"
 import Link from "next/link";
 import {
     NavigationMenu,
@@ -13,9 +13,12 @@ import {
 import { Switch } from "@/components/ui/switch"
 import { Button } from "@/components/ui/button"
 import MobileMenu from "./MobileMenu";
+import { usePathname } from "next/navigation";
 
 
 export default function Navbar() {
+
+    const pathname = usePathname()
     return (
         <header className="py-4 bg-white text-gray-900 transition-colors duration-300 shadow-md ">
             <nav className="max-w-7xl mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8">
@@ -29,7 +32,7 @@ export default function Navbar() {
                 <NavigationMenu className="hidden lg:flex">
                     <NavigationMenuList className="flex space-x-8">
                         <NavigationMenuItem>
-                            <NavigationMenuLink href="/news" className="hover: text-gray-600">News
+                            <NavigationMenuLink href="/news" className={`${pathname === '/news' ? 'text-red-500 font-semibold' : ''} hover:text-gray-600`}>News
                             </NavigationMenuLink>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
@@ -69,11 +72,11 @@ export default function Navbar() {
                             </NavigationMenuContent>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
-                            <NavigationMenuLink href="/about" className="hover: text-gray-600">About
+                            <NavigationMenuLink href="/about" className={`${pathname === '/about' ? 'text-red-500 font-semibold' : ''} hover:text-gray-600`}>About
                             </NavigationMenuLink>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
-                            <NavigationMenuLink href="/contact" className="hover: text-gray-600">Contact
+                            <NavigationMenuLink href="/contact" className={`${pathname === '/contact' ? 'text-red-500 font-semibold' : ''} hover:text-gray-600`}>Contact
                             </NavigationMenuLink>
                         </NavigationMenuItem>
 
